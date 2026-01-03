@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "11543421754",
+    "project_id": "pencagol-1091e",
+    "storage_bucket": "pencagol-1091e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11543421754:android:32d199b45b80d676156603",
+        "android_client_info": {
+          "package_name": "com.transformapp.pencagol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11543421754-0p5cvead0q4i8n1slucm744tcmnssj0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVMvLSIFzImejckqU63EcSIKYBK3F-0rI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11543421754-0p5cvead0q4i8n1slucm744tcmnssj0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
+

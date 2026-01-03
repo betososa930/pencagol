@@ -1,0 +1,8 @@
+# Configuración de Flutter para evitar problemas de DDS
+# Este archivo ayuda a resolver el error:
+# "Error connecting to the service protocol: failed to connect to http://127.0.0.1:63151/"
+
+# Opciones de ejecución recomendadas:
+# flutter run --no-dds
+# flutter run --disable-service-auth-codes
+# flutter run -d emulator-5554 --no-dds

@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Flutter: Run (No DDS)",
+            "request": "launch",
+            "type": "dart",
+            "args": ["--no-dds"],
+            "flutterMode": "debug",
+            "program": "lib/main.dart"
+        },
+        {
+            "name": "Flutter: Run",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "program": "lib/main.dart"
+        },
+        {
+            "name": "Flutter: Run (Release)",
+            "request": "launch",
+            "type": "dart",
+            "args": ["--release"],
+            "flutterMode": "release",
+            "program": "lib/main.dart"
+        }
+    ]
+}
