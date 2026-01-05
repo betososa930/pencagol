@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../theme/app_theme.dart';
 import '../services/auth_service.dart';
+import '../services/preferences_service.dart';
+import '../utils/app_strings.dart';
+import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -17,26 +20,28 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isPasswordVisible = false;
-  late AnimationController _logoController;
-  late Animation<double> _logoAnimation;
+  bool _rememberUser = false;
 
   @override
   void initState() {
     super.initState();
-    _logoController = AnimationController(
-      duration: const Duration(milliseconds: 1500),
-      vsync: this,
-    );
-    _logoAnimation = CurvedAnimation(
-      parent: _logoController,
-      curve: Curves.elasticOut,
-    );
-    _logoController.forward();
+    _loadSavedEmail();
+  }
+
+  Future<void> _loadSavedEmail() async {
+    final savedEmail = await PreferencesService.getSavedEmail();
+    final isRemembered = await PreferencesService.isRememberUserEnabled();
+
+    if (savedEmail != null && isRemembered) {
+      setState(() {
+        _usernameController.text = savedEmail;
+        _rememberUser = true;
+      });
+    }
   }
 
   @override
   void dispose() {
-    _logoController.dispose();
     _usernameController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -74,27 +79,22 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     }
   }
 
-  Future<void> _loginWithFacebook() async {
-    HapticFeedback.lightImpact();
-    try {
-      await AuthService.instance.signInWithMeta();
-      // StreamBuilder en main.dart llevará al Home automáticamente
-    } catch (error) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(error.toString()),
-          backgroundColor: AppTheme.primaryGreen,
-        ),
-      );
-    }
-  }
-
   Future<void> _login() async {
     if (_formKey.currentState!.validate()) {
       HapticFeedback.lightImpact();
       try {
-        await AuthService.instance.signInWithGoogle();
+        await AuthService.instance.signInWithEmail(
+          email: _usernameController.text.trim(),
+          password: _passwordController.text,
+        );
+
+        // Guardar email si marcó "Recordar usuario"
+        if (_rememberUser) {
+          await PreferencesService.saveEmail(_usernameController.text.trim());
+          await PreferencesService.setRememberUser(true);
+        } else {
+          await PreferencesService.clearSavedUser();
+        }
         // StreamBuilder en main.dart llevará al Home automáticamente
       } catch (error) {
         if (!mounted) return;
@@ -110,10 +110,113 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
   void _goToRegister() {
     HapticFeedback.lightImpact();
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Funcionalidad de registro próximamente'),
-        backgroundColor: AppTheme.primaryGreen,
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const RegisterPage(),
+      ),
+    );
+  }
+
+  void _showForgotPasswordDialog() {
+    HapticFeedback.lightImpact();
+    final emailController = TextEditingController();
+    final formKey = GlobalKey<FormState>();
+    bool isLoading = false;
+
+    showDialog(
+      context: context,
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          title: const Text('Recuperar Contraseña'),
+          content: Form(
+            key: formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Ingresa tu email y recibirás un enlace para restablecer tu contraseña.',
+                  style: TextStyle(color: AppTheme.darkGrey, fontSize: 13),
+                ),
+                const SizedBox(height: 16),
+                TextFormField(
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  enabled: !isLoading,
+                  decoration: InputDecoration(
+                    labelText: 'Correo Electrónico',
+                    prefixIcon: const Icon(Icons.email_outlined),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor ingresa tu email';
+                    }
+                    if (!RegExp(
+                            r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+                        .hasMatch(value)) {
+                      return 'Email inválido';
+                    }
+                    return null;
+                  },
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: isLoading ? null : () => Navigator.pop(context),
+              child: const Text('Cancelar'),
+            ),
+            ElevatedButton(
+              onPressed: isLoading
+                  ? null
+                  : () async {
+                      if (formKey.currentState!.validate()) {
+                        setState(() => isLoading = true);
+                        try {
+                          await AuthService.instance.sendPasswordResetEmail(
+                              emailController.text.trim());
+                          if (!mounted) return;
+                          Navigator.pop(context);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                  'Se envió un enlace de recuperación a tu email. Revisa tu bandeja.'),
+                              backgroundColor: AppTheme.primaryGreen,
+                              duration: Duration(seconds: 4),
+                            ),
+                          );
+                        } catch (error) {
+                          setState(() => isLoading = false);
+                          if (!mounted) return;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(error.toString()),
+                              backgroundColor: AppTheme.accentOrange,
+                            ),
+                          );
+                        }
+                      }
+                    },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppTheme.accentOrange,
+              ),
+              child: isLoading
+                  ? const SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(AppTheme.white),
+                      ),
+                    )
+                  : const Text('Enviar'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -245,35 +348,6 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 16),
-
-                          // Botón de Facebook
-                          SizedBox(
-                            width: double.infinity,
-                            height: 56,
-                            child: ElevatedButton.icon(
-                              onPressed: _loginWithFacebook,
-                              icon: const Icon(Icons.facebook, size: 22),
-                              label: const Text(
-                                'Facebook',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF1877F2),
-                                foregroundColor: AppTheme.white,
-                                elevation: 8,
-                                shadowColor:
-                                    const Color(0xFF1877F2).withOpacity(0.4),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                              ),
-                            ),
-                          ),
                           const SizedBox(height: 28),
 
                           // Divisor
@@ -366,6 +440,30 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           ),
                           const SizedBox(height: 28),
 
+                          // Checkbox "Recordar usuario"
+                          Row(
+                            children: [
+                              Checkbox(
+                                value: _rememberUser,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _rememberUser = value ?? false;
+                                  });
+                                },
+                                activeColor: AppTheme.accentOrange,
+                              ),
+                              Text(
+                                AppStrings.rememberUser,
+                                style: TextStyle(
+                                  color: AppTheme.darkGrey,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+
                           // Botón de login alternativo
                           SizedBox(
                             width: double.infinity,
@@ -388,7 +486,21 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 12),
+
+                          // Link de contraseña olvidada
+                          TextButton(
+                            onPressed: _showForgotPasswordDialog,
+                            child: const Text(
+                              '¿Olvidaste tu contraseña?',
+                              style: TextStyle(
+                                color: AppTheme.accentOrange,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
 
                           // Link de registro
                           TextButton(

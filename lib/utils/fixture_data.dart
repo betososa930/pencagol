@@ -1,0 +1,892 @@
+﻿class FixtureData {
+  // Mapa de países a banderas
+  static const Map<String, String> countryFlags = {
+    'México': '🇲🇽',
+    'Sudáfrica': '🇿🇦',
+    'Corea del Sur': '🇰🇷',
+    'Ganador Repechaje Europeo D': '🏆',
+    'Ganador Repechaje Europeo A': '🏆',
+    'Ganador Repechaje Europeo C': '🏆',
+    'Ganador Repechaje Europeo B': '🏆',
+    'Canadá': '🇨🇦',
+    'Qatar': '🇶🇦',
+    'Suiza': '🇨🇭',
+    'Brasil': '🇧🇷',
+    'Marruecos': '🇲🇦',
+    'Haití': '🇭🇹',
+    'Escocia': 'GB',
+    'Estados Unidos': '🇺🇸',
+    'Paraguay': '🇵🇾',
+    'Australia': '🇦🇺',
+    'Alemania': '🇩🇪',
+    'Curazao': '🇨🇼',
+    'Costa de Marfil': '🇨🇮',
+    'Ecuador': '🇪🇨',
+    'Túnez': '🇹🇳',
+    'Países Bajos': '🇳🇱',
+    'Japón': '🇯🇵',
+    'Bélgica': '🇧🇪',
+    'Egipto': '🇪🇬',
+    'Irán': '🇮🇷',
+    'Nueva Zelanda': '🇳🇿',
+    'España': '🇪🇸',
+    'Cabo Verde': '🇨🇻',
+    'Arabia Saudita': '🇸🇦',
+    'Uruguay': '🇺🇾',
+    'Francia': '🇫🇷',
+    'Senegal': '🇸🇳',
+    'Ganador Repechaje Intercontinental 2': '🏆',
+    'Noruega': '🇳🇴',
+    'Argentina': '🇦🇷',
+    'Argelia': '🇩🇿',
+    'Austria': '🇦🇹',
+    'Jordania': '🇯🇴',
+    'Portugal': '🇵🇹',
+    'Ganador Repechaje Intercontinental 1': '🏆',
+    'Uzbekistán': '🇺🇿',
+    'Colombia': '🇨🇴',
+    'Inglaterra': 'GB',
+    'Croacia': '🇭🇷',
+    'Ghana': '🇬🇭',
+    'Panamá': '🇵🇦',
+    'Italia': '🇮🇹',
+    'Holanda': '🇳🇱',
+    'Serbia': '🇷🇸',
+    'Costa Rica': '🇨🇷',
+    'Emiratos Árabes Unidos': '🇦🇪',
+    'Bolivia': '🇧🇴',
+    'Vietnam': '🇻🇳',
+    'Aotearoa Nueva Zelanda': '🇳🇿',
+    'Indonesia': '🇮🇩',
+    'Perú': '🇵🇪',
+    'Dinamarca': '🇩🇰',
+    'China': '🇨🇳',
+    'Grecia': '🇬🇷',
+    'Guatemala': '🇬🇹',
+    'Chile': '🇨🇱',
+    'Kazajistán': '🇰🇿',
+    'Islandia': '🇮🇸',
+    'Suecia': '🇸🇪',
+    'Polonia': '🇵🇱',
+  };
+
+  static List<Map<String, dynamic>> getAllMatches() {
+    return [
+      // GRUPO A - 6 partidos
+      {
+        'group': 'A',
+        'round': 1,
+        'date': '2026-06-11',
+        'time': '16:00',
+        'team1': 'México',
+        'flag1': '🇲🇽',
+        'team2': 'Sudáfrica',
+        'flag2': '🇿🇦',
+        'stadium': 'Estadio Azteca, Ciudad de México'
+      },
+      {
+        'group': 'A',
+        'round': 1,
+        'date': '2026-06-11',
+        'time': '23:00',
+        'team1': 'Corea del Sur',
+        'flag1': '🇰🇷',
+        'team2': 'Ganador Repechaje Europeo D',
+        'flag2': '🏆',
+        'stadium': 'Estadio Akron, Zapopan'
+      },
+      {
+        'group': 'A',
+        'round': 2,
+        'date': '2026-06-18',
+        'time': '13:00',
+        'team1': 'Sudáfrica',
+        'flag1': '🇿🇦',
+        'team2': 'Ganador Repechaje Europeo D',
+        'flag2': '🏆',
+        'stadium': 'Mercedes-Benz Stadium, Atlanta'
+      },
+      {
+        'group': 'A',
+        'round': 2,
+        'date': '2026-06-18',
+        'time': '22:00',
+        'team1': 'México',
+        'flag1': '🇲🇽',
+        'team2': 'Corea del Sur',
+        'flag2': '🇰🇷',
+        'stadium': 'Estadio Akron, Zapopan'
+      },
+      {
+        'group': 'A',
+        'round': 3,
+        'date': '2026-06-24',
+        'time': '22:00',
+        'team1': 'Sudáfrica',
+        'flag1': '🇿🇦',
+        'team2': 'Corea del Sur',
+        'flag2': '🇰🇷',
+        'stadium': 'Estadio BBVA, Guadalupe'
+      },
+      {
+        'group': 'A',
+        'round': 3,
+        'date': '2026-06-24',
+        'time': '22:00',
+        'team1': 'México',
+        'flag1': '🇲🇽',
+        'team2': 'Ganador Repechaje Europeo D',
+        'flag2': '🏆',
+        'stadium': 'Estadio Azteca, Ciudad de México'
+      },
+
+      // GRUPO B - 6 partidos
+      {
+        'group': 'B',
+        'round': 1,
+        'date': '2026-06-12',
+        'time': '16:00',
+        'team1': 'Canadá',
+        'flag1': '🇨🇦',
+        'team2': 'Ganador Repechaje Europeo A',
+        'flag2': '🏆',
+        'stadium': 'BMO Field, Toronto'
+      },
+      {
+        'group': 'B',
+        'round': 1,
+        'date': '2026-06-13',
+        'time': '16:00',
+        'team1': 'Qatar',
+        'flag1': '🇶🇦',
+        'team2': 'Suiza',
+        'flag2': '🇨🇭',
+        'stadium': 'Levi\'s Stadium, Santa Clara'
+      },
+      {
+        'group': 'B',
+        'round': 2,
+        'date': '2026-06-18',
+        'time': '16:00',
+        'team1': 'Suiza',
+        'flag1': '🇨🇭',
+        'team2': 'Ganador Repechaje Europeo A',
+        'flag2': '🏆',
+        'stadium': 'SoFi Stadium, Inglewood'
+      },
+      {
+        'group': 'B',
+        'round': 2,
+        'date': '2026-06-18',
+        'time': '19:00',
+        'team1': 'Canadá',
+        'flag1': '🇨🇦',
+        'team2': 'Qatar',
+        'flag2': '🇶🇦',
+        'stadium': 'BC Place, Vancouver'
+      },
+      {
+        'group': 'B',
+        'round': 3,
+        'date': '2026-06-24',
+        'time': '16:00',
+        'team1': 'Suiza',
+        'flag1': '🇨🇭',
+        'team2': 'Canadá',
+        'flag2': '🇨🇦',
+        'stadium': 'BC Place, Vancouver'
+      },
+      {
+        'group': 'B',
+        'round': 3,
+        'date': '2026-06-24',
+        'time': '16:00',
+        'team1': 'Qatar',
+        'flag1': '🇶🇦',
+        'team2': 'Ganador Repechaje Europeo A',
+        'flag2': '🏆',
+        'stadium': 'Lumen Field, Seattle'
+      },
+
+      // GRUPO C - 6 partidos
+      {
+        'group': 'C',
+        'round': 1,
+        'date': '2026-06-13',
+        'time': '19:00',
+        'team1': 'Brasil',
+        'flag1': '🇧🇷',
+        'team2': 'Marruecos',
+        'flag2': '🇲🇦',
+        'stadium': 'MetLife Stadium, East Rutherford'
+      },
+      {
+        'group': 'C',
+        'round': 1,
+        'date': '2026-06-13',
+        'time': '22:00',
+        'team1': 'Haití',
+        'flag1': '🇭🇹',
+        'team2': 'Escocia',
+        'flag2': 'Esc',
+        'stadium': 'Gillette Stadium, Foxborough'
+      },
+      {
+        'group': 'C',
+        'round': 2,
+        'date': '2026-06-19',
+        'time': '19:00',
+        'team1': 'Escocia',
+        'flag1': 'Esc',
+        'team2': 'Marruecos',
+        'flag2': '🇲🇦',
+        'stadium': 'Gillette Stadium, Foxborough'
+      },
+      {
+        'group': 'C',
+        'round': 2,
+        'date': '2026-06-19',
+        'time': '22:00',
+        'team1': 'Brasil',
+        'flag1': '🇧🇷',
+        'team2': 'Haití',
+        'flag2': '🇭🇹',
+        'stadium': 'Lincoln Financial Field, Philadelphia'
+      },
+      {
+        'group': 'C',
+        'round': 3,
+        'date': '2026-06-24',
+        'time': '19:00',
+        'team1': 'Marruecos',
+        'flag1': '🇲🇦',
+        'team2': 'Haití',
+        'flag2': '🇭🇹',
+        'stadium': 'Mercedes-Benz Stadium, Atlanta'
+      },
+      {
+        'group': 'C',
+        'round': 3,
+        'date': '2026-06-24',
+        'time': '19:00',
+        'team1': 'Escocia',
+        'flag1': 'Esc',
+        'team2': 'Brasil',
+        'flag2': '🇧🇷',
+        'stadium': 'Hard Rock Stadium, Miami Gardens'
+      },
+
+      // GRUPO D - 6 partidos
+      {
+        'group': 'D',
+        'round': 1,
+        'date': '2026-06-12',
+        'time': '22:00',
+        'team1': 'Estados Unidos',
+        'flag1': '🇺🇸',
+        'team2': 'Paraguay',
+        'flag2': '🇵🇾',
+        'stadium': 'SoFi Stadium, Inglewood'
+      },
+      {
+        'group': 'D',
+        'round': 1,
+        'date': '2026-06-14',
+        'time': '01:00',
+        'team1': 'Australia',
+        'flag1': '🇦🇺',
+        'team2': 'Ganador Repechaje Europeo C',
+        'flag2': '🏆',
+        'stadium': 'BC Place, Vancouver'
+      },
+      {
+        'group': 'D',
+        'round': 2,
+        'date': '2026-06-19',
+        'time': '16:00',
+        'team1': 'Estados Unidos',
+        'flag1': '🇺🇸',
+        'team2': 'Australia',
+        'flag2': '🇦🇺',
+        'stadium': 'Lumen Field, Seattle'
+      },
+      {
+        'group': 'D',
+        'round': 2,
+        'date': '2026-06-20',
+        'time': '01:00',
+        'team1': 'Paraguay',
+        'flag1': '🇵🇾',
+        'team2': 'Ganador Repechaje Europeo C',
+        'flag2': '🏆',
+        'stadium': 'Levi\'s Stadium, Santa Clara'
+      },
+      {
+        'group': 'D',
+        'round': 3,
+        'date': '2026-06-25',
+        'time': '23:00',
+        'team1': 'Paraguay',
+        'flag1': '🇵🇾',
+        'team2': 'Australia',
+        'flag2': '🇦🇺',
+        'stadium': 'Levi\'s Stadium, Santa Clara'
+      },
+      {
+        'group': 'D',
+        'round': 3,
+        'date': '2026-06-25',
+        'time': '23:00',
+        'team1': 'Estados Unidos',
+        'flag1': '🇺🇸',
+        'team2': 'Ganador Repechaje Europeo C',
+        'flag2': '🏆',
+        'stadium': 'SoFi Stadium, Inglewood'
+      },
+
+      // GRUPO E - 6 partidos
+      {
+        'group': 'E',
+        'round': 1,
+        'date': '2026-06-14',
+        'time': '14:00',
+        'team1': 'Alemania',
+        'flag1': '🇩🇪',
+        'team2': 'Curazao',
+        'flag2': '🇨🇼',
+        'stadium': 'NRG Stadium, Houston'
+      },
+      {
+        'group': 'E',
+        'round': 1,
+        'date': '2026-06-14',
+        'time': '20:00',
+        'team1': 'Costa de Marfil',
+        'flag1': '🇨🇮',
+        'team2': 'Ecuador',
+        'flag2': '🇪🇨',
+        'stadium': 'Lincoln Financial Field, Philadelphia'
+      },
+      {
+        'group': 'E',
+        'round': 2,
+        'date': '2026-06-20',
+        'time': '17:00',
+        'team1': 'Alemania',
+        'flag1': '🇩🇪',
+        'team2': 'Costa de Marfil',
+        'flag2': '🇨🇮',
+        'stadium': 'BMO Field, Toronto'
+      },
+      {
+        'group': 'E',
+        'round': 2,
+        'date': '2026-06-20',
+        'time': '21:00',
+        'team1': 'Ecuador',
+        'flag1': '🇪🇨',
+        'team2': 'Curazao',
+        'flag2': '🇨🇼',
+        'stadium': 'Arrowhead Stadium, Kansas City'
+      },
+      {
+        'group': 'E',
+        'round': 3,
+        'date': '2026-06-25',
+        'time': '17:00',
+        'team1': 'Curazao',
+        'flag1': '🇨🇼',
+        'team2': 'Costa de Marfil',
+        'flag2': '🇨🇮',
+        'stadium': 'Lincoln Financial Field, Philadelphia'
+      },
+      {
+        'group': 'E',
+        'round': 3,
+        'date': '2026-06-25',
+        'time': '17:00',
+        'team1': 'Ecuador',
+        'flag1': '🇪🇨',
+        'team2': 'Alemania',
+        'flag2': '🇩🇪',
+        'stadium': 'MetLife Stadium, East Rutherford'
+      },
+
+      // GRUPO F - 6 partidos
+      {
+        'group': 'F',
+        'round': 1,
+        'date': '2026-06-13',
+        'time': '23:00',
+        'team1': 'Túnez',
+        'flag1': '🇹🇳',
+        'team2': 'Ganador Repechaje Europeo B',
+        'flag2': '🏆',
+        'stadium': 'Estadio BBVA, Guadalupe'
+      },
+      {
+        'group': 'F',
+        'round': 1,
+        'date': '2026-06-14',
+        'time': '17:00',
+        'team1': 'Países Bajos',
+        'flag1': '🇳🇱',
+        'team2': 'Japón',
+        'flag2': '🇯🇵',
+        'stadium': 'AT&T Stadium, Arlington'
+      },
+      {
+        'group': 'F',
+        'round': 2,
+        'date': '2026-06-20',
+        'time': '14:00',
+        'team1': 'Países Bajos',
+        'flag1': '🇳🇱',
+        'team2': 'Ganador Repechaje Europeo B',
+        'flag2': '🏆',
+        'stadium': 'NRG Stadium, Houston'
+      },
+      {
+        'group': 'F',
+        'round': 2,
+        'date': '2026-06-21',
+        'time': '01:00',
+        'team1': 'Túnez',
+        'flag1': '🇹🇳',
+        'team2': 'Japón',
+        'flag2': '🇯🇵',
+        'stadium': 'Estadio BBVA, Guadalupe'
+      },
+      {
+        'group': 'F',
+        'round': 3,
+        'date': '2026-06-25',
+        'time': '20:00',
+        'team1': 'Japón',
+        'flag1': '🇯🇵',
+        'team2': 'Ganador Repechaje Europeo B',
+        'flag2': '🏆',
+        'stadium': 'AT&T Stadium, Arlington'
+      },
+      {
+        'group': 'F',
+        'round': 3,
+        'date': '2026-06-25',
+        'time': '20:00',
+        'team1': 'Túnez',
+        'flag1': '🇹🇳',
+        'team2': 'Países Bajos',
+        'flag2': '🇳🇱',
+        'stadium': 'Arrowhead Stadium, Kansas City'
+      },
+
+      // GRUPO G - 6 partidos
+      {
+        'group': 'G',
+        'round': 1,
+        'date': '2026-06-15',
+        'time': '16:00',
+        'team1': 'Bélgica',
+        'flag1': '🇧🇪',
+        'team2': 'Egipto',
+        'flag2': '🇪🇬',
+        'stadium': 'Lumen Field, Seattle'
+      },
+      {
+        'group': 'G',
+        'round': 1,
+        'date': '2026-06-15',
+        'time': '22:00',
+        'team1': 'Irán',
+        'flag1': '🇮🇷',
+        'team2': 'Nueva Zelanda',
+        'flag2': '🇳🇿',
+        'stadium': 'SoFi Stadium, Inglewood'
+      },
+      {
+        'group': 'G',
+        'round': 2,
+        'date': '2026-06-21',
+        'time': '16:00',
+        'team1': 'Bélgica',
+        'flag1': '🇧🇪',
+        'team2': 'Irán',
+        'flag2': '🇮🇷',
+        'stadium': 'SoFi Stadium, Inglewood'
+      },
+      {
+        'group': 'G',
+        'round': 2,
+        'date': '2026-06-21',
+        'time': '22:00',
+        'team1': 'Nueva Zelanda',
+        'flag1': '🇳🇿',
+        'team2': 'Egipto',
+        'flag2': '🇪🇬',
+        'stadium': 'BC Place, Vancouver'
+      },
+      {
+        'group': 'G',
+        'round': 3,
+        'date': '2026-06-27',
+        'time': '00:00',
+        'team1': 'Egipto',
+        'flag1': '🇪🇬',
+        'team2': 'Irán',
+        'flag2': '🇮🇷',
+        'stadium': 'Lumen Field, Seattle'
+      },
+      {
+        'group': 'G',
+        'round': 3,
+        'date': '2026-06-27',
+        'time': '00:00',
+        'team1': 'Nueva Zelanda',
+        'flag1': '🇳🇿',
+        'team2': 'Bélgica',
+        'flag2': '🇧🇪',
+        'stadium': 'BC Place, Vancouver'
+      },
+
+      // GRUPO H - 6 partidos
+      {
+        'group': 'H',
+        'round': 1,
+        'date': '2026-06-15',
+        'time': '13:00',
+        'team1': 'España',
+        'flag1': '🇪🇸',
+        'team2': 'Cabo Verde',
+        'flag2': '🇨🇻',
+        'stadium': 'Mercedes-Benz Stadium, Atlanta'
+      },
+      {
+        'group': 'H',
+        'round': 1,
+        'date': '2026-06-15',
+        'time': '19:00',
+        'team1': 'Arabia Saudita',
+        'flag1': '🇸🇦',
+        'team2': 'Uruguay',
+        'flag2': '🇺🇾',
+        'stadium': 'Hard Rock Stadium, Miami Gardens'
+      },
+      {
+        'group': 'H',
+        'round': 2,
+        'date': '2026-06-21',
+        'time': '13:00',
+        'team1': 'España',
+        'flag1': '🇪🇸',
+        'team2': 'Arabia Saudita',
+        'flag2': '🇸🇦',
+        'stadium': 'Mercedes-Benz Stadium, Atlanta'
+      },
+      {
+        'group': 'H',
+        'round': 2,
+        'date': '2026-06-21',
+        'time': '19:00',
+        'team1': 'Uruguay',
+        'flag1': '🇺🇾',
+        'team2': 'Cabo Verde',
+        'flag2': '🇨🇻',
+        'stadium': 'Hard Rock Stadium, Miami Gardens'
+      },
+      {
+        'group': 'H',
+        'round': 3,
+        'date': '2026-06-26',
+        'time': '21:00',
+        'team1': 'Cabo Verde',
+        'flag1': '🇨🇻',
+        'team2': 'Arabia Saudita',
+        'flag2': '🇸🇦',
+        'stadium': 'NRG Stadium, Houston'
+      },
+      {
+        'group': 'H',
+        'round': 3,
+        'date': '2026-06-26',
+        'time': '21:00',
+        'team1': 'Uruguay',
+        'flag1': '🇺🇾',
+        'team2': 'España',
+        'flag2': '🇪🇸',
+        'stadium': 'Estadio BBVA, Guadalajara'
+      },
+
+      // GRUPO I - 6 partidos
+      {
+        'group': 'I',
+        'round': 1,
+        'date': '2026-06-16',
+        'time': '16:00',
+        'team1': 'Francia',
+        'flag1': '🇫🇷',
+        'team2': 'Senegal',
+        'flag2': '🇸🇳',
+        'stadium': 'MetLife Stadium, East Rutherford'
+      },
+      {
+        'group': 'I',
+        'round': 1,
+        'date': '2026-06-16',
+        'time': '19:00',
+        'team1': 'Ganador Repechaje Intercontinental 2',
+        'flag1': '🏆',
+        'team2': 'Noruega',
+        'flag2': '🇳🇴',
+        'stadium': 'Gillette Stadium, Foxborough'
+      },
+      {
+        'group': 'I',
+        'round': 2,
+        'date': '2026-06-22',
+        'time': '18:00',
+        'team1': 'Francia',
+        'flag1': '🇫🇷',
+        'team2': 'Ganador Repechaje Intercontinental 2',
+        'flag2': '🏆',
+        'stadium': 'Lincoln Financial Field, Philadelphia'
+      },
+      {
+        'group': 'I',
+        'round': 2,
+        'date': '2026-06-22',
+        'time': '21:00',
+        'team1': 'Noruega',
+        'flag1': '🇳🇴',
+        'team2': 'Senegal',
+        'flag2': '🇸🇳',
+        'stadium': 'MetLife Stadium, East Rutherford'
+      },
+      {
+        'group': 'I',
+        'round': 3,
+        'date': '2026-06-26',
+        'time': '16:00',
+        'team1': 'Noruega',
+        'flag1': '🇳🇴',
+        'team2': 'Francia',
+        'flag2': '🇫🇷',
+        'stadium': 'Gillette Stadium, Foxborough'
+      },
+      {
+        'group': 'I',
+        'round': 3,
+        'date': '2026-06-26',
+        'time': '16:00',
+        'team1': 'Senegal',
+        'flag1': '🇸🇳',
+        'team2': 'Ganador Repechaje Intercontinental 2',
+        'flag2': '🏆',
+        'stadium': 'BMO Field, Toronto'
+      },
+
+      // GRUPO J - 6 partidos
+      {
+        'group': 'J',
+        'round': 1,
+        'date': '2026-06-16',
+        'time': '22:00',
+        'team1': 'Argentina',
+        'flag1': '🇦🇷',
+        'team2': 'Argelia',
+        'flag2': '🇩🇿',
+        'stadium': 'Arrowhead Stadium, Kansas City'
+      },
+      {
+        'group': 'J',
+        'round': 1,
+        'date': '2026-06-17',
+        'time': '01:00',
+        'team1': 'Austria',
+        'flag1': '🇦🇹',
+        'team2': 'Jordania',
+        'flag2': '🇯🇴',
+        'stadium': 'Levi\'s Stadium, Santa Clara'
+      },
+      {
+        'group': 'J',
+        'round': 2,
+        'date': '2026-06-22',
+        'time': '14:00',
+        'team1': 'Argentina',
+        'flag1': '🇦🇷',
+        'team2': 'Austria',
+        'flag2': '🇦🇹',
+        'stadium': 'AT&T Stadium, Arlington'
+      },
+      {
+        'group': 'J',
+        'round': 2,
+        'date': '2026-06-23',
+        'time': '00:00',
+        'team1': 'Jordania',
+        'flag1': '🇯🇴',
+        'team2': 'Argelia',
+        'flag2': '🇩🇿',
+        'stadium': 'Levi\'s Stadium, Santa Clara'
+      },
+      {
+        'group': 'J',
+        'round': 3,
+        'date': '2026-06-27',
+        'time': '23:00',
+        'team1': 'Argelia',
+        'flag1': '🇩🇿',
+        'team2': 'Austria',
+        'flag2': '🇦🇹',
+        'stadium': 'Arrowhead Stadium, Kansas City'
+      },
+      {
+        'group': 'J',
+        'round': 3,
+        'date': '2026-06-27',
+        'time': '23:00',
+        'team1': 'Jordania',
+        'flag1': '🇯🇴',
+        'team2': 'Argentina',
+        'flag2': '🇦🇷',
+        'stadium': 'AT&T Stadium, Arlington'
+      },
+
+      // GRUPO K - 6 partidos
+      {
+        'group': 'K',
+        'round': 1,
+        'date': '2026-06-17',
+        'time': '14:00',
+        'team1': 'Portugal',
+        'flag1': '🇵🇹',
+        'team2': 'Ganador Repechaje Intercontinental 1',
+        'flag2': '🏆',
+        'stadium': 'NRG Stadium, Houston'
+      },
+      {
+        'group': 'K',
+        'round': 1,
+        'date': '2026-06-17',
+        'time': '23:00',
+        'team1': 'Uzbekistán',
+        'flag1': '🇺🇿',
+        'team2': 'Colombia',
+        'flag2': '🇨🇴',
+        'stadium': 'Estadio Azteca, Ciudad de México'
+      },
+      {
+        'group': 'K',
+        'round': 2,
+        'date': '2026-06-23',
+        'time': '14:00',
+        'team1': 'Portugal',
+        'flag1': '🇵🇹',
+        'team2': 'Uzbekistán',
+        'flag2': '🇺🇿',
+        'stadium': 'NRG Stadium, Houston'
+      },
+      {
+        'group': 'K',
+        'round': 2,
+        'date': '2026-06-23',
+        'time': '23:00',
+        'team1': 'Colombia',
+        'flag1': '🇨🇴',
+        'team2': 'Ganador Repechaje Intercontinental 1',
+        'flag2': '🏆',
+        'stadium': 'Estadio Akron, Zapopan'
+      },
+      {
+        'group': 'K',
+        'round': 3,
+        'date': '2026-06-27',
+        'time': '20:30',
+        'team1': 'Colombia',
+        'flag1': '🇨🇴',
+        'team2': 'Portugal',
+        'flag2': '🇵🇹',
+        'stadium': 'Hard Rock Stadium, Miami Gardens'
+      },
+      {
+        'group': 'K',
+        'round': 3,
+        'date': '2026-06-27',
+        'time': '20:30',
+        'team1': 'Uzbekistán',
+        'flag1': '🇺🇿',
+        'team2': 'Ganador Repechaje Intercontinental 1',
+        'flag2': '🏆',
+        'stadium': 'Mercedes-Benz Stadium, Atlanta'
+      },
+
+      // GRUPO L - 6 partidos
+      {
+        'group': 'L',
+        'round': 1,
+        'date': '2026-06-17',
+        'time': '17:00',
+        'team1': 'Inglaterra',
+        'flag1': 'Ing',
+        'team2': 'Croacia',
+        'flag2': '🇭🇷',
+        'stadium': 'AT&T Stadium, Arlington'
+      },
+      {
+        'group': 'L',
+        'round': 1,
+        'date': '2026-06-17',
+        'time': '20:00',
+        'team1': 'Ghana',
+        'flag1': '🇬🇭',
+        'team2': 'Panamá',
+        'flag2': '🇵🇦',
+        'stadium': 'BMO Field, Toronto'
+      },
+      {
+        'group': 'L',
+        'round': 2,
+        'date': '2026-06-23',
+        'time': '17:00',
+        'team1': 'Inglaterra',
+        'flag1': 'Ing',
+        'team2': 'Ghana',
+        'flag2': '🇬🇭',
+        'stadium': 'Gillette Stadium, Foxborough'
+      },
+      {
+        'group': 'L',
+        'round': 2,
+        'date': '2026-06-23',
+        'time': '20:00',
+        'team1': 'Panamá',
+        'flag1': '🇵🇦',
+        'team2': 'Croacia',
+        'flag2': '🇭🇷',
+        'stadium': 'BMO Field, Toronto'
+      },
+      {
+        'group': 'L',
+        'round': 3,
+        'date': '2026-06-27',
+        'time': '18:00',
+        'team1': 'Croacia',
+        'flag1': '🇭🇷',
+        'team2': 'Ghana',
+        'flag2': '🇬🇭',
+        'stadium': 'Lincoln Financial Field, Philadelphia'
+      },
+      {
+        'group': 'L',
+        'round': 3,
+        'date': '2026-06-27',
+        'time': '18:00',
+        'team1': 'Panamá',
+        'flag1': '🇵🇦',
+        'team2': 'Inglaterra',
+        'flag2': 'Ing',
+        'stadium': 'MetLife Stadium, East Rutherford'
+      },
+    ];
+  }
+}

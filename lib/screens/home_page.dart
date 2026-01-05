@@ -7,6 +7,7 @@ import '../models/match_model.dart';
 import '../widgets/match_card.dart';
 import '../widgets/quick_access_card.dart';
 import '../services/auth_service.dart';
+import 'calendar_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -47,6 +48,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void _navigateToAdmin() {
     HapticFeedback.lightImpact();
     Navigator.pushNamed(context, '/admin');
+  }
+
+  void _navigateToCalendar() {
+    HapticFeedback.lightImpact();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const CalendarPage()),
+    );
   }
 
   @override
@@ -202,18 +211,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         Expanded(
                           child: QuickAccessCard(
                             icon: Icons.sports_soccer,
-                            title: 'Partidos',
+                            title: 'Calendario',
                             subtitle: 'Todos los partidos',
-                            onTap: () {
-                              HapticFeedback.lightImpact();
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content:
-                                      Text('Próximamente: Todos los Partidos'),
-                                  backgroundColor: AppTheme.primaryGreen,
-                                ),
-                              );
-                            },
+                            onTap: _navigateToCalendar,
                             gradientStart: AppTheme.accentBlue,
                             gradientEnd: AppTheme.accentBlue.withOpacity(0.6),
                           ),

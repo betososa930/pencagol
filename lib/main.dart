@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'screens/splash_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'screens/login_page.dart';
 import 'screens/home_page.dart';
 import 'screens/ranking_page.dart';
@@ -20,23 +21,38 @@ class PencaGolApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
+    return StreamBuilder<User?>(
       stream: AuthService.instance.authStateChanges,
       builder: (context, snapshot) {
-        final isLoggedIn = snapshot.data != null;
+        // Mientras se carga el estado de autenticación
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return MaterialApp(
+            home: Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          );
+        }
+
+        final isLoggedIn = snapshot.hasData;
         return MaterialApp(
           title: 'PencaGol',
           theme: AppTheme.lightTheme,
           debugShowCheckedModeBanner: false,
-          home: isLoggedIn ? const HomePage() : const SplashScreen(),
+          locale: const Locale('es', 'ES'),
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('es', 'ES'),
+            Locale('es', ''),
+          ],
+          home: isLoggedIn ? const HomePage() : const LoginPage(),
           onGenerateRoute: (settings) {
             switch (settings.name) {
-              case '/splash':
-                return MaterialPageRoute(
-                    builder: (context) => const SplashScreen());
-              case '/login':
-                return MaterialPageRoute(
-                    builder: (context) => const LoginPage());
               case '/home':
                 return SlidePageRoute(child: const HomePage());
               case '/ranking':
@@ -46,7 +62,7 @@ class PencaGolApp extends StatelessWidget {
               default:
                 return MaterialPageRoute(
                     builder: (context) =>
-                        isLoggedIn ? const HomePage() : const SplashScreen());
+                        isLoggedIn ? const HomePage() : const LoginPage());
             }
           },
         );
